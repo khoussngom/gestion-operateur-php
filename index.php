@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }elseif ($page === 'dashboard') {
         $controller = require_once BASE_DIR . '/app/Controllers/StatistiquesController.php';
         $controller['dashboard']($database);
-    }else {
-        $controller = require_once BASE_DIR . '/app/Controllers/StatistiquesController.php';
-        $controller['dashboard']($database);
+    }elseif (!$page) {
+            $controller = require_once BASE_DIR . '/app/Controllers/StatistiquesController.php';
+            $controller['dashboard']($database);
     }
