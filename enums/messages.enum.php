@@ -25,7 +25,10 @@ enum AppMessages: string {
     case SYSTEM_DEMANDE_NUMERO = 'system.demande_numero';
     case SYSTEM_DEMANDE_NOM = 'system.demande_nom';
     case SYSTEM_DEMANDE_PRENOM = 'system.demande_prenom';
-
+    case SYSTEM_MATRICULE = 'system.matricule';
+    case SYSTEM_NUMERO = 'system.numero';
+    case SYSTEM_NOM = 'system.nom';
+    case SYSTEM_PRENOM = 'system.prenom';
 
     case VIEW_TITRE_APPLICATION = 'view.titre_application';
 
@@ -67,10 +70,15 @@ enum AppMessages: string {
       
  
             'system.demande_operateur' => "Opérateur (Orange/Yas/Expresso) : ",
-            'system.demande_matricule' => "Matricule : ",
-            'system.demande_numero' => "Numéro : ",
-            'system.demande_nom' => "Nom : ",
-            'system.demande_prenom' => "Prénom : ",
+            'system.demande_matricule' => "Entrer le matricule  ",
+            'system.demande_numero' => "Entrer le numéro : ",
+            'system.demande_nom' => "Entrer le nom : ",
+            'system.demande_prenom' => "Entrer le Prénom : ",
+  
+            'system.matricule' => "Matricule :  ",
+            'system.numero' => "Numéro : ",
+            'system.nom' => "Nom : ",
+            'system.prenom' => "Prénom : ",
             
           
             'view.titre_ajout_client' => "Nouveau Client",
