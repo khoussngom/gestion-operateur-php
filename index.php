@@ -36,13 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 }
 
-
-
-
-
-
-
-
 $page = $_GET['page'] ?? 'client';
 $action = $_GET['action'] ?? 'form';
 $numero = $_GET['numero'] ?? null;
@@ -50,26 +43,12 @@ $matricule = $_GET['matricule'] ?? null;
 $search = $_GET['search'] ?? null;
 $operateur = $_GET['operateur'] ?? null;
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-
-    
-    if (($page === 'dashboard') ||(!isset($page) )) {
-           
-        $controller = require BASE_DIR . '/app/Controllers/StatistiquesController.php';
-        $controller['dashboard']($database);
-    }
 
 if($page === 'client')
 {
     require_once BASE_DIR . '/app/Controllers/TelephoneController.php';
     require_once BASE_DIR.'/app/Views/client/form.html.php';
 }
-}
-
-$page = $_GET['page'] ?? 'client';
-$action = $_GET['action'] ?? 'form';
-$matricule = $_GET['matricule'] ?? 'client';
-
 if ($page === 'client' && $action === 'list') {
     require BASE_DIR.'/app/Views/client/liste.client.html.php';
 } elseif ($page === 'telephone' && $action === 'list') {
@@ -77,16 +56,12 @@ if ($page === 'client' && $action === 'list') {
     require_once BASE_DIR.'/app/Views/telephone/telephone.html.php';
 } elseif ($page === 'client' && $action === 'view_numbers') {
     require_once BASE_DIR.'/app/Views/client/liste.telephone.client.html.php';
-} elseif ($page === 'telephone' && $action === 'add') {
-    require_once BASE_DIR.'/app/Views/client/form.html.php';
-}
-elseif ($page === 'client' && $action === 'view_numbers' && isset($matricule)) {
-    
+} elseif ($page === 'client' && $action === 'view_numbers' && isset($matricule)) {
     require_once BASE_DIR.'/app/Views/client/liste.telephone.client.html.php';
 }elseif ($page === 'dashboard') {
-    require_once BASE_DIR.'/app/Views/dashboard/dashboard.html.php';
-}
-elseif (($page === 'client' && $action === 'form')) {
+    $controller = require_once BASE_DIR . '/app/Controllers/StatistiquesController.php';
+    $controller['dashboard']($database);
+}elseif (($page === 'client' && $action === 'form')) {
     require_once BASE_DIR.'/app/Views/client/form.html.php';
 }else {
     $controller = require_once BASE_DIR . '/app/Controllers/StatistiquesController.php';
