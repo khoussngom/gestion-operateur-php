@@ -71,9 +71,9 @@ enum AppMessages: string {
  
             'system.demande_operateur' => "Opérateur (Orange/Yas/Expresso) : ",
             'system.demande_matricule' => "Entrer le matricule  ",
-            'system.demande_numero' => "Entrer le numéro : ",
-            'system.demande_nom' => "Entrer le nom : ",
-            'system.demande_prenom' => "Entrer le Prénom : ",
+            'system.demande_numero' => "Entrer le numéro  ",
+            'system.demande_nom' => "Entrer le nom  ",
+            'system.demande_prenom' => "Entrer le Prénom  ",
   
             'system.matricule' => "Matricule :  ",
             'system.numero' => "Numéro : ",
