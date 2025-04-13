@@ -14,7 +14,6 @@ require BASE_DIR.'/public/enums/messages.enum.php';
 $databaseFile = BASE_DIR.'/data/database.json';
 $database = json_decode(file_exists($databaseFile) ? file_get_contents($databaseFile) : '{"clients":[], "numeros":[]}', true);
 $telModel = include BASE_DIR.'/app/Models/TelephoneModel.php';
-$validator = include BASE_DIR.'/app/Models/validators.models.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $formType = $_POST['form_type'] ?? '';
@@ -25,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     };
 
     if ($controller) {
-        $result = $controller['handle']($_POST, $database, $databaseFile);
+        $result = $controller['cli']($_POST, $database, $databaseFile);
         if (isset($result['redirect'])) {
             header("Location: ".$result['redirect']);
             exit;
@@ -36,34 +35,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 }
 
-$page = $_GET['page'] ?? 'client';
-$action = $_GET['action'] ?? 'form';
-$numero = $_GET['numero'] ?? null;
-$matricule = $_GET['matricule'] ?? null;
-$search = $_GET['search'] ?? null;
-$operateur = $_GET['operateur'] ?? null;
+    $page = $_GET['page'] ?? 'client';
+    $action = $_GET['action'] ?? 'form';
+    $numero = $_GET['numero'] ?? null;
+    $matricule = $_GET['matricule'] ?? null;
+    $search = $_GET['search'] ?? null;
+    $operateur = $_GET['operateur'] ?? null;
 
 
-if($page === 'client')
-{
-    require_once BASE_DIR . '/app/Controllers/TelephoneController.php';
-    require_once BASE_DIR.'/app/Views/client/form.html.php';
-}
-if ($page === 'client' && $action === 'list') {
-    require BASE_DIR.'/app/Views/client/liste.client.html.php';
-} elseif ($page === 'telephone' && $action === 'list') {
-    require_once BASE_DIR . '/app/Controllers/TelephoneController.php';
-    require_once BASE_DIR.'/app/Views/telephone/telephone.html.php';
-} elseif ($page === 'client' && $action === 'view_numbers') {
-    require_once BASE_DIR.'/app/Views/client/liste.telephone.client.html.php';
-} elseif ($page === 'client' && $action === 'view_numbers' && isset($matricule)) {
-    require_once BASE_DIR.'/app/Views/client/liste.telephone.client.html.php';
-}elseif ($page === 'dashboard') {
-    $controller = require_once BASE_DIR . '/app/Controllers/StatistiquesController.php';
-    $controller['dashboard']($database);
-}elseif (($page === 'client' && $action === 'form')) {
-    require_once BASE_DIR.'/app/Views/client/form.html.php';
-}else {
-    $controller = require_once BASE_DIR . '/app/Controllers/StatistiquesController.php';
-    $controller['dashboard']($database);
-}
+    if($page === 'client')
+    {
+        require_once BASE_DIR . '/app/Controllers/TelephoneController.php';
+        require_once BASE_DIR.'/app/Views/client/form.html.php';
+    }
+
+    if($page==='client' && isset($search))
+    {
+        require_once BASE_DIR . '/app/Controllers/ClientController.php';
+        require_once BASE_DIR.'/app/Views/client/liste.client.html.php';
+    }
+
+    if ($page === 'client' && $action === 'list') {
+        require BASE_DIR.'/app/Views/client/liste.client.html.php';
+    } elseif ($page === 'telephone' && $action === 'list') {
+        require_once BASE_DIR . '/app/Controllers/TelephoneController.php';
+        require_once BASE_DIR.'/app/Views/telephone/telephone.html.php';
+    } elseif ($page === 'client' && $action === 'view_numbers') {
+        require_once BASE_DIR.'/app/Views/client/liste.telephone.client.html.php';
+    }elseif ($page === 'dashboard') {
+        $controller = require_once BASE_DIR . '/app/Controllers/StatistiquesController.php';
+        $controller['dashboard']($database);
+    }else {
+        $controller = require_once BASE_DIR . '/app/Controllers/StatistiquesController.php';
+        $controller['dashboard']($database);
+    }

@@ -1,27 +1,25 @@
 <?php
 
 enum AppMessages: string {
-    // Messages d'erreur
+  
     case MI = 'error.matricule_existant';
     case CLI = 'error.client_inexistant';
     case NI = 'error.numero_invalide';
     case CI = 'error.choix_invalide';
     
-    // Options du menu
+
     case MENU_AJOUTER_CLIENT = 'menu.ajouter_client';
     case MENU_LISTER_CLIENTS = 'menu.lister_clients';
     case MENU_AJOUTER_NUMERO = 'menu.ajouter_numero';
     case MENU_LISTER_NUMEROS = 'menu.lister_numeros';
     case MENU_DASHBOARD = 'menu.dashboard';
-    case MENU_FILTRER_CLIENT = 'menu.filtrer_client';
+
     case MENU_FILTRER_OPERATEUR = 'menu.filtrer_operateur';
     case MENU_CLIENT_PLUS_NUMEROS = 'menu.client_plus_numeros';
     case MENU_OPERATEUR_DOMINANT = 'menu.operateur_dominant';
     case MENU_QUITTER = 'menu.quitter';
     
-    // Messages système
-    case SYSTEM_AU_REVOIR = 'system.au_revoir';
-    case SYSTEM_DEMANDE_CHOIX = 'system.demande_choix';
+
     case SYSTEM_DEMANDE_OPERATEUR = 'system.demande_operateur';
     case SYSTEM_DEMANDE_MATRICULE = 'system.demande_matricule';
     case SYSTEM_DEMANDE_NUMERO = 'system.demande_numero';
@@ -29,12 +27,11 @@ enum AppMessages: string {
     case SYSTEM_DEMANDE_PRENOM = 'system.demande_prenom';
 
 
-    // Ajouter ces cas à votre enum existante
     case VIEW_TITRE_APPLICATION = 'view.titre_application';
 
 
 
-    // Messages de view
+
     
     case VIEW_TITRE_AJOUT_CLIENT = 'view.titre_ajout_client';
     case VIEW_TITRE_LISTE_CLIENTS = 'view.titre_liste_clients';
@@ -46,7 +43,7 @@ enum AppMessages: string {
     case VIEW_ENTETE_OPERATEUR = 'view.entete_operateur';
 
 
-    // Messages de confirmation
+
     case CONFIRM_CLIENT_AJOUTE = 'confirm.client_ajoute';
     case CONFIRM_NUMERO_AJOUTE = 'confirm.numero_ajoute';
 
@@ -63,15 +60,12 @@ enum AppMessages: string {
             'menu.lister_clients' => "3. Lister les Clients",
             'menu.lister_numeros' => "4. Lister les numéros",
             'menu.dashboard' => "5. Dashboard",
-            'menu.filtrer_client' => "Filtrer par client",
-            'menu.filtrer_operateur' => "Filtrer par opérateur",
             'menu.client_plus_numeros' => "Client avec plus de numéros",
             'menu.operateur_dominant' => "Opérateur dominant",
-            'menu.quitter' => "Quitter",
+          
             
       
-            'system.au_revoir' => "Au revoir !",
-            'system.demande_choix' => "Votre choix : ",
+ 
             'system.demande_operateur' => "Opérateur (Orange/Yas/Expresso) : ",
             'system.demande_matricule' => "Matricule : ",
             'system.demande_numero' => "Numéro : ",
@@ -107,8 +101,8 @@ enum AppMessages: string {
             self::MENU_LISTER_CLIENTS,
             self::MENU_AJOUTER_NUMERO,
             self::MENU_DASHBOARD,
+            self::SYSTEM_DEMANDE_MATRICULE,
             self::MENU_LISTER_NUMEROS,
-            self::MENU_FILTRER_CLIENT,
             self::MENU_FILTRER_OPERATEUR,
             self::MENU_CLIENT_PLUS_NUMEROS,
             self::MENU_OPERATEUR_DOMINANT,
