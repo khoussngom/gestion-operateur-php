@@ -1,4 +1,6 @@
 <?php
+declare(strict_types= 1);
+
 session_start();
 
 
@@ -60,7 +62,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($page === 'telephone' && $action === 'list') {
         require_once BASE_DIR . '/app/Controllers/TelephoneController.php';
         require_once BASE_DIR.'/app/Views/telephone/telephone.html.php';
-    } elseif ($page === 'client' && $action === 'view_numbers') {
+    }  elseif ($page === 'telephone' && isset($search) && isset($operateur)) {
+        require_once BASE_DIR . '/app/Controllers/TelephoneController.php';
+        require_once BASE_DIR.'/app/Views/telephone/telephone.html.php';
+    }
+    elseif ($page === 'client' && $action === 'view_numbers') {
         require_once BASE_DIR.'/app/Views/client/liste.telephone.client.html.php';
     }elseif ($page === 'dashboard') {
         $controller = require_once BASE_DIR . '/app/Controllers/StatistiquesController.php';
